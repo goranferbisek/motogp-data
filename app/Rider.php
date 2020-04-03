@@ -13,8 +13,8 @@ class Rider extends Model
         return $this->belongsTo(Team::class);
     }
 
-    public function motorcycle()
+    public function bike()
     {
-        return $this->belongsTo(Motorcycle::class);
+        return $this->belongsTo(Bike::class);
     }
 }

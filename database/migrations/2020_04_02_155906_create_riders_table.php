@@ -18,7 +18,7 @@ class CreateRidersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->foreignId('team_id');
-            $table->foreignId('motorcycle_id');
+            $table->foreignId('bike_id');
             $table->foreignId('country_id');
             $table->unsignedSmallInteger('racing_number');
             $table->unsignedtinyInteger('age');
@@ -29,9 +29,9 @@ class CreateRidersTable extends Migration
                 ->on('teams')
                 ->onDelete('cascade');
 
-            $table->foreign('motorcycle_id')
+            $table->foreign('bike_id')
                 ->references('id')
-                ->on('motorcycles')
+                ->on('bikes')
                 ->onDelete('cascade');
 
             $table->foreign('country_id')
