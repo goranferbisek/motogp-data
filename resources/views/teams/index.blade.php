@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+<main>
     <h1>Teams</h1>
 
     @foreach ($teams as $team)
@@ -12,4 +13,5 @@
             @endforeach
         </ul>
     @endforeach
+</main>
 @endsection

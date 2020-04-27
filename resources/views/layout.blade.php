@@ -6,15 +6,18 @@
     <link rel="stylesheet" href="css/main.css">
     <title>{{ config('app.name') }}</title>
 </head>
-<body>
-<header>
+<body class="container mx-auto py-4">
+<header class="flex justify-between items-center mb-6">
+    <div class="logo">
+        MotoGP data
+    </div>
     <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="#">Racing seasons</a></li>
-            <li><a href="#">Riders</a></li>
-            <li><a href="/teams">Teams</a></li>
-            <li><a href="#">Tracks</a></li>
+        <ul class="flex">
+            <li><a href="/" class="mr-6">Home</a></li>
+            <li><a href="#" class="mr-6">Racing seasons</a></li>
+            <li><a href="#" class="mr-6">Riders</a></li>
+            <li><a href="/teams" class="mr-6">Teams</a></li>
+            <li><a href="#" class="mr-6">Tracks</a></li>
         </ul>
     </nav>
 </header>
