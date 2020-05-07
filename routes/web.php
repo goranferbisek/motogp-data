@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/teams', 'TeamsController@index');
 
 Route::get('/riders', 'RidersController@index');
+
+Route::get('/tracks', 'TracksController@index');
