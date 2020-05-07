@@ -15,7 +15,7 @@ class CreateSeasonsTable extends Migration
     {
         Schema::create('seasons', function (Blueprint $table) {
             $table->id();
-            $table->smallInteger('year');
+            $table->smallInteger('year')->unique();
             $table->timestamps();
         });
     }
