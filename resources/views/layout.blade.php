@@ -15,7 +15,7 @@
         <ul class="flex">
             <li><a href="/" class="mr-6">Home</a></li>
             <li><a href="#" class="mr-6">Racing seasons</a></li>
-            <li><a href="#" class="mr-6">Riders</a></li>
+            <li><a href="riders" class="mr-6">Riders</a></li>
             <li><a href="/teams" class="mr-6">Teams</a></li>
             <li><a href="#" class="mr-6">Tracks</a></li>
         </ul>
