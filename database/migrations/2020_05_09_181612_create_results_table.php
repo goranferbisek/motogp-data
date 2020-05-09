@@ -17,7 +17,7 @@ class CreateResultsTable extends Migration
             $table->id();
             $table->foreignId('race_id');
             $table->foreignId('rider_id');
-            $table->tinyInteger('position');
+            $table->tinyInteger('position')->unique();
             $table->timestamps();
 
             $table->foreign('race_id')
