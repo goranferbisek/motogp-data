@@ -7,7 +7,7 @@
     <div class="flex flex-wrap">
         @foreach ($riders as $rider)
             <div class="w-1/4 mx-4 pb-4">
-                <div>Country |
+                <div>{{ $rider->country->name }} |
                     {{ $rider->first_name .' '.$rider->last_name .' '.
                     $rider->racing_number .' age:'. $rider->age }}
                 </div>
@@ -15,7 +15,7 @@
                 <img src="images/riders/vr46.jpg" alt="Valentino Rossi 46">
                 <div>
                     Team: {{ $rider->team->name }}
-                    Bike: Some bike
+                    Bike: {{ $rider->bike->make }}
                 </div>
             </div>
         @endforeach

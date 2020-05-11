@@ -15,6 +15,11 @@ class Rider extends Model
 
     public function bike()
     {
-        return $this->hasOne(Bike::class);
+        return $this->belongsTo(Bike::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

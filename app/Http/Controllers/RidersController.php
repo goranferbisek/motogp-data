@@ -10,7 +10,7 @@ class RidersController extends Controller
     public function index()
     {
         return view('riders.index', [
-            'riders' => Rider::with('team')->get()
+            'riders' => Rider::with(['team', 'country', 'bike'])->get()
         ]);
     }
 }
