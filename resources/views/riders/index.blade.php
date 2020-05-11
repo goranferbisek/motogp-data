@@ -9,7 +9,8 @@
             <li>{{
                 $rider->racing_number .' | '.
                 $rider->first_name .' '.
-                $rider->last_name
+                $rider->last_name .' | '.
+                "Team: " . $rider->team->name
             }}</li>
         @endforeach
     </ul>
