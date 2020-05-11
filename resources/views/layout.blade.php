@@ -9,7 +9,7 @@
 <body class="container mx-auto py-4">
 <header class="flex justify-between items-center mb-6">
     <div class="logo">
-        <span class="text-red-600">MotoGP</span> data
+        <a href="/"><span class="text-red-600">MotoGP</span> data</a>
     </div>
     <nav>
         <ul class="flex">
