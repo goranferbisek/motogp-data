@@ -22,6 +22,7 @@ class CreateRidersTable extends Migration
             $table->foreignId('country_id');
             $table->unsignedSmallInteger('racing_number');
             $table->unsignedtinyInteger('age');
+            $table->string('photo')->nullable();
             $table->timestamps();
 
             $table->foreign('team_id')

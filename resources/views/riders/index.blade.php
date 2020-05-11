@@ -12,7 +12,10 @@
                     $rider->racing_number .' age:'. $rider->age }}
                 </div>
                 <hr>
-                <img src="images/riders/vr46.jpg" alt="Valentino Rossi 46">
+                <img
+                    src="images/riders/{{ $rider->photo ?: 'default-photo.jpg' }}"
+                    alt=""
+                >
                 <div>
                     Team: {{ $rider->team->name }}
                     Bike: {{ $rider->bike->make }}
