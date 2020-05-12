@@ -9,7 +9,7 @@
             <div class="w-1/4 mx-4 pb-4">
                 <div class="flex items-center justify-between">
                     <img
-                        src="images/flags/default-flag.svg"
+                        src="images/flags/{{$rider->country->icon ?: 'default-flag.svg' }}"
                         alt="{{ $rider->country->name }}"
                         class="h-4 mr-2"
                     >
