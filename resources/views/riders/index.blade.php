@@ -7,9 +7,14 @@
     <div class="flex flex-wrap">
         @foreach ($riders as $rider)
             <div class="w-1/4 mx-4 pb-4">
-                <div>{{ $rider->country->name }} |
-                    {{ $rider->first_name .' '.$rider->last_name .' '.
-                    $rider->racing_number .' age:'. $rider->age }}
+                <div class="flex items-center justify-between">
+                    <img
+                        src="images/flags/default-flag.svg"
+                        alt="{{ $rider->country->name }}"
+                        class="h-4 mr-2"
+                    >
+                    <span>{{ $rider->first_name}} {{$rider->last_name}} {{$rider->racing_number}}</span>
+                    <span>age: {{$rider->age }}</span>
                 </div>
                 <hr>
                 <img
