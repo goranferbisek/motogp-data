@@ -22,4 +22,12 @@ Route::get('/teams', 'TeamsController@index');
 Route::get('/riders', 'RidersController@index');
 
 Route::get('/tracks', 'TracksController@index');
+
 Auth::routes();
+
+
+Route::middleware('auth')->group(function() {
+    Route::get('/admin', function() {
+        return view('backend.admin');
+    });
+});
