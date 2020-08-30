@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,10 +11,5 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js');
-
-mix.postCss('resources/css/main.css', 'public/css', [
-    require('tailwindcss'),
-]);
-
-mix.browserSync('http://motogp-data.test/');
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css');

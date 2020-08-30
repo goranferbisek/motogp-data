@@ -22,3 +22,6 @@ Route::get('/teams', 'TeamsController@index');
 Route::get('/riders', 'RidersController@index');
 
 Route::get('/tracks', 'TracksController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
