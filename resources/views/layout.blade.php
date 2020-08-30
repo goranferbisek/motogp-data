@@ -18,6 +18,7 @@
             <li><a href="riders" class="mr-6">Riders</a></li>
             <li><a href="/teams" class="mr-6">Teams</a></li>
             <li><a href="/tracks" class="mr-6">Tracks</a></li>
+            <li><a href="/admin" class="mr-6">Admin panel</a></li>
         </ul>
     </nav>
 </header>
