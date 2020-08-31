@@ -4,13 +4,15 @@
 <main>
     <nav>
         <ul>
-            <li>Link 1</li>
+            <li><a href="/admin/teams" class="mr-6">Teams</a></li>
             <li>Link 2</li>
             <li>Link 3</li>
             <li>Link 4</li>
             <li>Link 5</li>
         </ul>
-        <h1>This is the admin panel.</h1>
+        <hr class="border-red-600">
+
+        @yield('admin.content')
     </nav>
 </main>
 @endsection
