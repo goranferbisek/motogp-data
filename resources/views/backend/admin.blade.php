@@ -1,18 +1,18 @@
 @extends('layout')
 
 @section('content')
-<main>
-    <nav>
+<main class="flex">
+    <nav class="w-1/6 border-r-2 border-red-600 mr-8">
+        <h1 class="text-xl font-bold mb-2">Menu</h1>
         <ul>
-            <li><a href="/admin/teams" class="mr-6">Teams</a></li>
-            <li>Link 2</li>
-            <li>Link 3</li>
-            <li>Link 4</li>
-            <li>Link 5</li>
+            <li class="mb-2"><a href="/admin">Admin panel</a></li>
+            <li class="mb-2"><a href="/admin/teams">Teams</a></li>
+            <li class="mb-2"><a href="#">Riders</a></li>
+            <li class="mb-2"><a href="#">Circuits</a></li>
         </ul>
-        <hr class="border-red-600">
-
-        @yield('admin.content')
     </nav>
+    <div>
+        @yield('admin.content', 'Welcome to the admin panel.')
+    </div>
 </main>
 @endsection
