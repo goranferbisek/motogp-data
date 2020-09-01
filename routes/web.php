@@ -31,7 +31,5 @@ Route::middleware('auth')->group(function() {
         return view('backend.admin');
     });
 
-    Route::get('/admin/teams/', function () {
-        return view('backend.teams.index');
-    });
+    Route::get('/admin/teams/', 'Admin\TeamsController@index');
 });
