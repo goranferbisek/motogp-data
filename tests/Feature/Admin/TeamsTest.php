@@ -5,6 +5,7 @@ namespace Tests\Feature\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\User;
 
 class TeamsTest extends TestCase
 {
@@ -13,6 +14,8 @@ class TeamsTest extends TestCase
     /** @test */
     public function a_user_can_add_a_new_team() {
         $this->withoutExceptionHandling();
+
+        $this->actingAs(factory(User::class)->create());
 
         $attributes = [
             'name' => $this->faker->company
