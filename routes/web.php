@@ -32,4 +32,5 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::get('/admin/teams/', 'Admin\TeamsController@index');
+    Route::post('/admin/teams/create', 'Admin\TeamsController@create');
 });
