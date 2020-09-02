@@ -12,6 +12,8 @@ class TeamsTest extends TestCase
 
     /** @test */
     public function a_user_can_add_a_new_team() {
+        $this->withoutExceptionHandling();
+
         $attributes = [
             'name' => $this->faker->company
         ];
