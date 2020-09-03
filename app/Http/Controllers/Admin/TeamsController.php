@@ -19,4 +19,16 @@ class TeamsController extends Controller
     {
         return view('backend.teams.create');
     }
+
+    public function store()
+    {
+        $attributes = request()->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        $team = new Team($attributes);
+        $team->save();
+
+        return redirect('/admin/teams');
+    }
 }
