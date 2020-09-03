@@ -21,7 +21,7 @@ class TeamsTest extends TestCase
             'name' => $this->faker->company
         ];
 
-        $this->post('/admin/teams/create', $attributes);
+        $this->post('/admin/teams', $attributes);
 
         $this->assertDatabaseHas('teams', $attributes);
     }
