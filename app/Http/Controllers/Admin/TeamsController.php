@@ -14,4 +14,9 @@ class TeamsController extends Controller
             'teams' => Team::all()
         ]);
     }
+
+    public function create()
+    {
+        return view('backend.teams.create');
+    }
 }
