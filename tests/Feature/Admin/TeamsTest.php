@@ -24,5 +24,7 @@ class TeamsTest extends TestCase
         $this->post('/admin/teams', $attributes);
 
         $this->assertDatabaseHas('teams', $attributes);
+
+        $this->get('/admin/teams')->assertSee($attributes['name']);
     }
 }
