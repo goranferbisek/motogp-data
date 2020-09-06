@@ -22,10 +22,7 @@ class TeamsController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate([
-            'name' => 'required|max:255'
-        ]);
-
+        $attributes = request()->validate(['name' => 'required|max:255']);
         $team = new Team($attributes);
         $team->save();
 

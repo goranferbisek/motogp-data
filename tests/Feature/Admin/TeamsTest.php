@@ -12,7 +12,8 @@ class TeamsTest extends TestCase
     use WithFaker, RefreshDatabase;
 
     /** @test */
-    public function a_user_can_add_a_new_team() {
+    public function a_user_can_add_a_new_team()
+    {
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
@@ -26,5 +27,13 @@ class TeamsTest extends TestCase
         $this->assertDatabaseHas('teams', $attributes);
 
         $this->get('/admin/teams')->assertSee($attributes['name']);
+    }
+
+    /** @test */
+    public function a_team_requires_a_name()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $this->post('/admin/teams', [])->assertSessionHasErrors('name');
     }
 }
