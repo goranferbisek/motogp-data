@@ -12,7 +12,9 @@
         @foreach ($teams as $team)
             <p class="mb-2">
                 {{ $team->name }}
-                <a href="admin/teams/edit/" class="text-blue-600">edit</a>
+                <a href="admin/teams/{{ $team->id }}/edit/" class="text-blue-600">
+                    edit
+                </a>
             </p>
         @endforeach
     </div>
