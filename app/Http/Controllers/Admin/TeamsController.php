@@ -28,4 +28,9 @@ class TeamsController extends Controller
 
         return redirect('/admin/teams');
     }
+
+    public function edit(Team $team)
+    {
+        return view('backend.teams.edit', ['team' => $team]);
+    }
 }
