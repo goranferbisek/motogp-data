@@ -3,9 +3,9 @@
 @section('admin.content')
     <h1 class="text-xl mb-2">Edit this team</h1>
 
-    <form method="POST" action="/admin/teams">
+    <form method="POST" action="/admin/teams/{{ $team->id }}">
         @csrf
-        @method('POST')
+        @method('PUT')
 
         <label for="name">Team name:</label><br>
         <input type="text" name="name" id="name"
