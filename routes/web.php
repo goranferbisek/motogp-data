@@ -35,4 +35,5 @@ Route::middleware('auth')->group(function() {
     Route::post('/admin/teams', 'Admin\TeamsController@store');
     Route::get('/admin/teams/create', 'Admin\TeamsController@create');
     Route::get('/admin/teams/{team}/edit', 'Admin\TeamsController@edit');
+    Route::put('/admin/teams/{team}', 'Admin\TeamsController@update');
 });
