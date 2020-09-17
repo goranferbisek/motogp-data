@@ -42,11 +42,14 @@ class TeamsTest extends TestCase
         $this->get('/admin/teams/' . $team->id . '/edit')
             ->assertSee($team->name);
 
-        //change values
+        $this->put('/admin/teams/' . $team->id, $attributes =  [
+            'name' => 'Changed'])
+            ->assertRedirect('/admin/teams');
 
-        //save values
+        $this->get('/admin/teams/' . $team->id . '/edit')->assertOk();
 
-        //see changed values
+        $this->assertDatabaseHas('teams', $attributes);
+
     }
 
     /** @test */

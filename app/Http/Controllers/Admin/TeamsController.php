@@ -22,7 +22,7 @@ class TeamsController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate(['name' => 'required|max:255']);
+        $attributes = $this->validateTeam();
         $team = new Team($attributes);
         $team->save();
 
@@ -35,8 +35,15 @@ class TeamsController extends Controller
     }
 
     public function update(Team $team) {
-        // update
+        $attributes = $this->validateTeam();
 
-        // redirect to /admin/teams
+        $team->update($attributes);
+
+        return redirect('/admin/teams');
+    }
+
+    protected function validateTeam()
+    {
+        return request()->validate(['name' => 'required|max:255']);
     }
 }
