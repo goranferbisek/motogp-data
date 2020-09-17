@@ -53,6 +53,23 @@ class TeamsTest extends TestCase
     }
 
     /** @test */
+    public function a_user_can_delete_a_team()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory(User::class)->create());
+
+        $team = factory(Team::class)->create();
+
+        $this->delete('/admin/teams/' . $team->id)
+            ->assertRedirect('/admin/teams');
+
+        $this->get('/admin/teams/' . $team->id . '/edit')->assertNotFound();
+
+        $this->assertDatabaseMissing('teams', ['name' => $team->name]);
+    }
+
+    /** @test */
     public function a_team_requires_a_name()
     {
         $this->actingAs(factory(User::class)->create());
