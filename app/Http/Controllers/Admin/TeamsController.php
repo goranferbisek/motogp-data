@@ -42,6 +42,13 @@ class TeamsController extends Controller
         return redirect('/admin/teams');
     }
 
+    public function destroy(Team $team)
+    {
+        $team->delete();
+
+        return redirect('/admin/teams');
+    }
+
     protected function validateTeam()
     {
         return request()->validate(['name' => 'required|max:255']);
