@@ -55,7 +55,7 @@ class TeamsTest extends TestCase
     /** @test */
     public function a_user_can_delete_a_team()
     {
-        $this->withoutExceptionHandling();
+        //$this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
 
