@@ -15,7 +15,9 @@
         <br>
         <input type="submit" value="Submit" class="mt-2 p-2 bg-blue-300">
     </form>
-    <form action="">
+    <form method="POST" action="/admin/teams/{{ $team->id }}">
+        @csrf
+        @method('PUT')
         <input type="submit" value="Delete" class="mt-2 p-2 bg-red-600">
     </form>
 @endsection
