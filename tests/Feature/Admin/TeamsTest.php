@@ -66,7 +66,7 @@ class TeamsTest extends TestCase
 
         $this->get('/admin/teams/' . $team->id . '/edit')->assertNotFound();
 
-        $this->assertDatabaseMissing('teams', ['name' => $team->name]);
+        $this->assertDatabaseMissing('teams', $team->toArray());
     }
 
     /** @test */
