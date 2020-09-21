@@ -51,6 +51,6 @@ class TeamsController extends Controller
 
     protected function validateTeam()
     {
-        return request()->validate(['name' => 'required|max:255']);
+        return request()->validate(['name' => 'required|unique:teams|max:255']);
     }
 }
