@@ -37,4 +37,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/admin/teams/{team}/edit', 'Admin\TeamsController@edit');
     Route::put('/admin/teams/{team}', 'Admin\TeamsController@update');
     Route::delete('/admin/teams/{team}', 'Admin\TeamsController@destroy');
+
+    Route::get('/admin/countries/', 'Admin\CountriesController@index');
 });
