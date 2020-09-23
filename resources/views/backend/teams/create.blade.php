@@ -16,7 +16,7 @@
             class="border @if($errors->first('name')) border-red-600 @else border-blue-600 @endif"
             value="{{ old('name') }}">
         @error('name')
-            <p class="text-red-900">{{ $errors->first('name') }}</p>
+            <p class="text-red-600">{{ $message }}</p>
         @enderror
         <br>
         <input type="submit" value="Submit" class="mt-2 p-2 bg-blue-300">
