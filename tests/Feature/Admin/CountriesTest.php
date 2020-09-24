@@ -19,7 +19,7 @@ class CountriesTest extends TestCase
         $this->actingAs(factory(User::class)->create());
 
         $attributes = [
-            'name' => $this->faker->company
+            'name' => $this->faker->unique()->country
         ];
 
         $this->post('/admin/countries', $attributes)->assertRedirect('/admin/countries');
