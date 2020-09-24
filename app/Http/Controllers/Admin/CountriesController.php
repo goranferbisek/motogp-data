@@ -15,6 +15,11 @@ class CountriesController extends Controller
         ] );
     }
 
+    public function create()
+    {
+        return view('backend.countries.create');
+    }
+
     public function store(Country $country)
     {
         $attributes = $this->validateCountry();
