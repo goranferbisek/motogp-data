@@ -31,12 +31,14 @@ Route::middleware('auth')->group(function() {
         return view('backend.admin');
     });
 
-    Route::get('/admin/teams/', 'Admin\TeamsController@index');
+    Route::get('/admin/teams', 'Admin\TeamsController@index');
     Route::post('/admin/teams', 'Admin\TeamsController@store');
     Route::get('/admin/teams/create', 'Admin\TeamsController@create');
     Route::get('/admin/teams/{team}/edit', 'Admin\TeamsController@edit');
     Route::put('/admin/teams/{team}', 'Admin\TeamsController@update');
     Route::delete('/admin/teams/{team}', 'Admin\TeamsController@destroy');
 
-    Route::get('/admin/countries/', 'Admin\CountriesController@index');
+    Route::get('/admin/countries', 'Admin\CountriesController@index');
+    Route::post('/admin/countries', 'Admin\CountriesController@store');
+    Route::get('/admin/countries/create', 'Admin\CountriesController@create');
 });
