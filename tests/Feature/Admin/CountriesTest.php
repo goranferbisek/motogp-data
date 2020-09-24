@@ -24,7 +24,7 @@ class CountriesTest extends TestCase
 
         $this->post('/admin/countries', $attributes)->assertRedirect('/admin/countries');
 
-        $this->assertDatabaseHas('teams', $attributes);
+        $this->assertDatabaseHas('countries', $attributes);
 
         $this->get('/admin/countries')->assertSee($attributes['name']);
     }
