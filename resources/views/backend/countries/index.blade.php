@@ -12,7 +12,7 @@
         @foreach ($countries as $country)
             <p class="mb-2">
                 {{ $country->name }}
-                <a href="/admin/countries/{{ $team->id }}/edit/" class="text-blue-600">
+                <a href="/admin/countries/{{ $country->id }}/edit/" class="text-blue-600">
                     edit
                 </a>
             </p>
