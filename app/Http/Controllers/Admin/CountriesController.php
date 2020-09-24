@@ -14,4 +14,20 @@ class CountriesController extends Controller
             'countries' => Country::all()
         ] );
     }
+
+    public function store(Country $country)
+    {
+        $attributes = $this->validateCountry();
+        $country = new Country($attributes);
+        $country->save();
+
+        return redirect('/admin/countries');
+    }
+
+    public function validateCountry()
+    {
+        return request()->validate([
+            'name' => 'required|unique:countries|max:255'
+        ]);
+    }
 }
