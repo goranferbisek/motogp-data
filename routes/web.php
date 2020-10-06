@@ -41,4 +41,5 @@ Route::middleware('auth')->group(function() {
     Route::get('/admin/countries', 'Admin\CountriesController@index');
     Route::post('/admin/countries', 'Admin\CountriesController@store');
     Route::get('/admin/countries/create', 'Admin\CountriesController@create');
+    Route::get('/admin/countries/{country}/edit', 'Admin\CountriesController@edit');
 });
