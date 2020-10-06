@@ -34,6 +34,15 @@ class CountriesController extends Controller
         return view('backend.countries.edit', ['country' => $country]);
     }
 
+    public function update(Country $country)
+    {
+        // validate input
+
+        // update country
+
+        // redirect back
+    }
+
     public function validateCountry()
     {
         return request()->validate([
