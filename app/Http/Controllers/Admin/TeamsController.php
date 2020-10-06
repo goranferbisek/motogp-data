@@ -34,7 +34,8 @@ class TeamsController extends Controller
         return view('backend.teams.edit', ['team' => $team]);
     }
 
-    public function update(Team $team) {
+    public function update(Team $team)
+    {
         $attributes = $this->validateTeam();
 
         $team->update($attributes);
