@@ -45,10 +45,10 @@ class CountriesTest extends TestCase
         $this->put('/admin/countries/' . $country->id, $attributes =  [
             'name' => 'Changed'
         ])
-        ->assertRedirect('/admin/teams');
+        ->assertRedirect('/admin/countries');
 
         $this->get('/admin/countries/' . $country->id . '/edit')->assertOk();
 
-        $this->assertDatabaseHas('teams', $attributes);
+        $this->assertDatabaseHas('countries', $attributes);
     }
 }
