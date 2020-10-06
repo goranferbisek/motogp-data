@@ -29,6 +29,11 @@ class CountriesController extends Controller
         return redirect('/admin/countries');
     }
 
+    public function edit(Country $country)
+    {
+        return view('backend.countries.edit', ['country' => $country]);
+    }
+
     public function validateCountry()
     {
         return request()->validate([
