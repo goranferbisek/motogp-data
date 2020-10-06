@@ -39,13 +39,16 @@ class CountriesTest extends TestCase
 
         $country = factory(Country::class)->create();
 
-        // can you see edit form - assert see country name
         $this->get('/admin/countries/' . $country->id . '/edit')
             ->assertSee($country->name);
 
-        // change attrbiutes and assert redirect
+        $this->put('/admin/countries/' . $country->id, $attributes =  [
+            'name' => 'Changed'
+        ])
+        ->assertRedirect('/admin/teams');
 
+        $this->get('/admin/countries/' . $country->id . '/edit')->assertOk();
 
-        // assert database see
+        $this->assertDatabaseHas('teams', $attributes);
     }
 }
