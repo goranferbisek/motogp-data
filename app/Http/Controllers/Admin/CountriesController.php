@@ -36,11 +36,10 @@ class CountriesController extends Controller
 
     public function update(Country $country)
     {
-        // validate input
+        $attributes = $this->validateCountry();
+        $something = $country->update($attributes);
 
-        // update country
-
-        // redirect back
+        return redirect('/admin/countries');
     }
 
     public function validateCountry()
