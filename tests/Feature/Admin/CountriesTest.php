@@ -60,9 +60,10 @@ class CountriesTest extends TestCase
         $this->actingAs(factory(User::class)->create());
 
         $country = factory(Country::class)->create();
-        $this->delete('/admin/country/' . $country->id)
-            ->assertRedirect('/admin/country');
-        $this->get('/admin/country/' . $country->id)->assertNotFound();
+        $this->delete('/admin/countries/' . $country->id)
+            ->assertRedirect('/admin/countries');
+        $this->get('/admin/countries/' . $country->id . '/edit')
+            ->assertNotFound();
         $this->assertDatabaseMissing('countries', $country->toArray());
     }
 }
