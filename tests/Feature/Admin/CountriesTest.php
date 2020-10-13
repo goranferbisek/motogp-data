@@ -51,4 +51,18 @@ class CountriesTest extends TestCase
 
         $this->assertDatabaseHas('countries', $attributes);
     }
+
+    /** @test */
+    public function a_user_can_delete_a_country()
+    {
+        $this->withExceptionHandling();
+
+        $this->actingAs(factory(User::class)->create());
+
+        $country = factory(Country::class)->create();
+        $this->delete('/admin/country/' . $country->id)
+            ->assertRedirect('/admin/country');
+        $this->get('/admin/country/' . $country->id)->assertNotFound();
+        $this->assertDatabaseMissing('countries', $country->toArray());
+    }
 }
