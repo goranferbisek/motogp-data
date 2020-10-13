@@ -42,6 +42,12 @@ class CountriesController extends Controller
         return redirect('/admin/countries');
     }
 
+    public function delete(Country $country)
+    {
+        $country->delete();
+        return redirect('/admin/countries');
+    }
+
     public function validateCountry()
     {
         return request()->validate([
