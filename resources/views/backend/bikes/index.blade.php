@@ -11,7 +11,7 @@
     <div class="mt-8">
         @foreach ($bikes as $bike)
             <p class="mb-2">
-                {{ $bike->name }}
+                {{ $bike->make }}
                 <a href="/admin/bikes/{{ $bike->id }}/edit/" class="text-blue-600">
                     edit
                 </a>

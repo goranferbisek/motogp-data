@@ -14,4 +14,25 @@ class BikesController extends Controller
             'bikes' => Bike::all()
         ]);
     }
+
+    public function create()
+    {
+        return view('backend.bikes.create');
+    }
+
+    public function store()
+    {
+        $attributes = $this->validateBike();
+        $bike = new Bike($attributes);
+        $bike->save();
+
+        return redirect('/admin/bikes');
+    }
+
+    public function validateBike()
+    {
+        return request()->validate([
+            'make' => 'required|unique:bikes|max:255'
+        ]);
+    }
 }
