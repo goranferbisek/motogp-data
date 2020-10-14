@@ -44,4 +44,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/admin/countries/{country}/edit', 'Admin\CountriesController@edit');
     Route::put('/admin/countries/{country}', 'Admin\CountriesController@update');
     Route::delete('/admin/countries/{country}', 'Admin\CountriesController@delete');
+
+    Route::get('/admin/bikes', 'Admin\BikesController@index');
 });
