@@ -34,6 +34,14 @@ class BikesController extends Controller
         return view('backend.bikes.edit', ['bike' => $bike]);
     }
 
+    public function update(Bike $bike)
+    {
+        $attributes = $this->validateBike();
+        $bike->update($attributes);
+
+        return redirect('/admin/bikes');
+    }
+
     public function validateBike()
     {
         return request()->validate([
