@@ -50,4 +50,5 @@ Route::middleware('auth')->group(function() {
     Route::get('/admin/bikes/create', 'Admin\BikesController@create');
     Route::get('/admin/bikes/{bike}/edit', 'Admin\BikesController@edit');
     Route::put('/admin/bikes/{bike}', 'Admin\BikesController@update');
+    Route::delete('/admin/bikes/{bike}', 'Admin\BikesController@delete');
 });

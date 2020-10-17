@@ -42,6 +42,12 @@ class BikesController extends Controller
         return redirect('/admin/bikes');
     }
 
+    public function delete(Bike $bike)
+    {
+        $bike->delete();
+        return redirect('/admin/bikes');
+    }
+
     public function validateBike()
     {
         return request()->validate([
