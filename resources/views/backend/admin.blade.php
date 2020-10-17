@@ -10,7 +10,7 @@
             <li class="mb-2"><a href="/admin/teams">Manage teams</a></li>
             <li class="mb-2"><a href="/admin/countries">Manage countries</a></li>
             <li class="mb-2"><a href="/admin/bikes">Manage bikes</a></li>
-            <li class="mb-2"><a href="#">Riders</a></li>
+            <li class="mb-2"><a href="/admin/riders">Riders</a></li>
             <li class="mb-2"><a href="#">Circuits</a></li>
         </ul>
     </nav>
