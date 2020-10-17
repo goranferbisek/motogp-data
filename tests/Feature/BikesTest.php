@@ -49,8 +49,6 @@ class BikesTest extends TestCase
     /** @test */
     public function a_user_can_delete_a_bike()
     {
-        $this->withoutExceptionHandling();
-
         $this->actingAs(factory(User::class)->create());
         $bike = factory(Bike::class)->create();
 
