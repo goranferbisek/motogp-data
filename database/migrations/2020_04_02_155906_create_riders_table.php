@@ -15,8 +15,7 @@ class CreateRidersTable extends Migration
     {
         Schema::create('riders', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('name')->unique();
             $table->foreignId('team_id');
             $table->foreignId('bike_id');
             $table->foreignId('country_id');
