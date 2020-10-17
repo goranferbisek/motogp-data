@@ -7,8 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Rider::class, function (Faker $faker) {
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->Lastname,
+        'name' => $faker->firstName . ' ' . $faker->Lastname,
         'team_id' => factory(App\Team::class),
         'bike_id' => factory(App\Bike::class),
         'country_id' => factory(App\Country::class),
