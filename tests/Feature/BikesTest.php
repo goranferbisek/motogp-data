@@ -45,4 +45,18 @@ class BikesTest extends TestCase
         $this->get('/admin/bikes/' . $bike->id . '/edit')->assertOk();
         $this->assertDatabaseHas('bikes', $attributes);
     }
+
+    /** @test */
+    public function a_user_can_delete_a_bike()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory(User::class)->create());
+        $bike = factory(Bike::class)->create();
+
+        $this->delete('/admin/bikes/' . $bike->id)
+            ->assertRedirect('/admin/bikes');
+        $this->get('/admin/bikes/' . $bike->id . '/edit')->assertNotFound();
+        $this->assertDatabaseMissing('bikes', $bike->toArray());
+    }
 }
