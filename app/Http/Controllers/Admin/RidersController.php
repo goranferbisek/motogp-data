@@ -38,11 +38,11 @@ class RidersController extends Controller
     {
         return request()->validate([
             'name' => 'required|unique:riders|max:255',
-            'team_id' => 'required|numeric',
-            'bike_id' => 'required|numeric',
-            'country_id' => 'required|numeric',
-            'racing_number' => 'required|numeric',
-            'age' => 'required|numeric',
+            'team_id' => 'required|exists:teams,id',
+            'bike_id' => 'required|exists:bikes,id',
+            'country_id' => 'required|exists:countries,id',
+            'racing_number' => 'integer|min:1|max:99',
+            'age' => 'required|integer|min:15|max:50',
         ]);
     }
 }
