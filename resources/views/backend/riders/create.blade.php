@@ -35,7 +35,10 @@
         <select name="country_id" id="country_id">
                 <option value="">--Select a country--</option>
             @foreach ($countries as $country)
-                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                <option
+                    value="{{ $country->id }}"
+                    {{ old('country_id') == $country->id ? 'selected' : '' }}
+                >{{ $country->name }}</option>
             @endforeach
         </select>
         @error('country_id')
@@ -58,7 +61,10 @@
         <select name="team_id" id="team_id">
                 <option value="">--Select a team--</option>
             @foreach ($teams as $team)
-                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                <option
+                    value="{{ $team->id }}"
+                    {{ old('team_id') == $team->id ? 'selected' : '' }}
+                >{{ $team->name }}</option>
             @endforeach
         </select>
         @error('team_id')
@@ -69,7 +75,10 @@
         <select name="bike_id" id="bike_id">
             <option value="">--Select a bike--</option>
             @foreach ($bikes as $bike)
-                <option value="{{ $bike->id }}">{{ $bike->make }}</option>
+                <option
+                    value="{{ $bike->id }}"
+                    {{ old('bike_id') == $bike->id ? 'selected' : '' }}
+                >{{ $bike->make }}</option>
             @endforeach
         </select>
         @error('bike_id')
