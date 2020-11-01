@@ -32,4 +32,22 @@ class RidersTest extends TestCase
         $this->assertDatabaseHas('riders', $attributes);
         $this->get('/admin/riders')->assertSee($attributes['name']);
     }
+
+    /** @test */
+    public function a_user_can_edit_a_rider()
+    {
+        $this->withoutExceptionHandling();
+        $this->actingAs(factory(User::class)->create());
+        $rider = factory(Rider::class)->create();
+
+        $this->get('/admin/riders/' . $rider->id . '/edit')
+            ->assertSee($rider->name);
+
+        $this->put('/admin/riders/' . $rider->id, $attributes =  [
+             'name' => 'Changed Name'
+        ])->assertRedirect('/admin/riders');
+
+        $this->get('/admin/rides/' . $rider->id . '/edit')->assertOk();
+        $this->assertDatabaseHas('riders', $attributes);
+    }
 }
