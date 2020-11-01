@@ -34,6 +34,24 @@ class RidersController extends Controller
         return redirect('/admin/riders');
     }
 
+    public function edit(Rider $rider)
+    {
+        return view('backend.riders.edit', [
+            'rider' => $rider,
+            'countries' => Country::all(),
+            'teams' => Team::all(),
+            'bikes' => Bike::all()
+        ]);
+    }
+
+    public function update(Rider $rider)
+    {
+        $attributes = $this->validateRider();
+        $rider->update($attributes);
+
+        return redirect('/admin/riders');
+    }
+
     public function validateRider()
     {
         return request()->validate([
