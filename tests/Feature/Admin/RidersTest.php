@@ -43,11 +43,12 @@ class RidersTest extends TestCase
         $this->get('/admin/riders/' . $rider->id . '/edit')
             ->assertSee($rider->name);
 
-        $this->put('/admin/riders/' . $rider->id, $attributes =  [
-             'name' => 'Changed Name'
-        ])->assertRedirect('/admin/riders');
+        $attributes = $rider->toArray();
+        $attributes['name'] = 'Changed Name';
 
-        $this->get('/admin/rides/' . $rider->id . '/edit')->assertOk();
-        $this->assertDatabaseHas('riders', $attributes);
+        $this->put('/admin/riders/' . $rider->id, $attributes)
+            ->assertRedirect('/admin/riders');
+        $this->get('/admin/riders/' . $rider->id . '/edit')->assertOk();
+        $this->assertDatabaseHas('riders', ['name' => 'Changed Name']);
     }
 }
