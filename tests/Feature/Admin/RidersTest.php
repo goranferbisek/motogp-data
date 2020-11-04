@@ -51,4 +51,16 @@ class RidersTest extends TestCase
         $this->get('/admin/riders/' . $rider->id . '/edit')->assertOk();
         $this->assertDatabaseHas('riders', ['name' => 'Changed Name']);
     }
+
+    /** @test */
+    public function a_user_can_delete_a_rider()
+    {
+        $this->actingAs(factory(User::class)->create());
+        $rider = factory(Rider::class)->create();
+
+        $this->delete('/admin/riders/' . $rider->id)
+            ->assertRedirect('/admin/riders');
+        $this->get('/admin/riders/' . $rider->id . '/edit')->assertNotFound();
+        $this->assertDatabaseMissing('riders', $rider->toArray());
+    }
 }
