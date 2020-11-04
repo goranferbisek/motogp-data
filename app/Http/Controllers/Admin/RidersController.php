@@ -52,6 +52,12 @@ class RidersController extends Controller
         return redirect('/admin/riders');
     }
 
+    public function destroy(Rider $rider)
+    {
+        $rider->delete();
+        return redirect('/admin/riders');
+    }
+
     public function validateRider()
     {
         return request()->validate([

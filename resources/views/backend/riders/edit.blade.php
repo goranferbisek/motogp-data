@@ -87,7 +87,7 @@
 
         <input type="submit" value="Submit" class="mt-2 p-2 bg-blue-300">
     </form>
-    <form method="POST" action="/admin/riders/{{ $team->id }}">
+    <form method="POST" action="/admin/riders/{{ $rider->id }}">
         @csrf
         @method('DELETE')
         <input type="submit" value="Delete" class="mt-2 p-2 bg-red-600">
