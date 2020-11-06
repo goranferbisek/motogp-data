@@ -53,4 +53,5 @@ Route::middleware('auth')->group(function() {
     Route::delete('/admin/bikes/{bike}', 'Admin\BikesController@delete');
 
     Route::resource('/admin/riders', Admin\RidersController::class);
+    Route::resource('/admin/tracks', Admin\TracksController::class);
 });
