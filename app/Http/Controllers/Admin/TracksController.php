@@ -12,4 +12,18 @@ class TracksController extends Controller
     {
         return view('backend.tracks.index', ['tracks' => Track::all()]);
     }
+
+    public function store()
+    {
+        // $attributes = $this->validateTrack();
+    }
+
+    public function validateTrack()
+    {
+        return request()->validate([
+            'country_id' => 'required|exists:countries,id',
+            'name' => 'required|unique:tracks|max:255',
+            'length' => 'required|integer|min:1|max:25000'
+        ]);
+    }
 }
