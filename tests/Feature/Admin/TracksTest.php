@@ -26,7 +26,7 @@ class TracksTest extends TestCase
             'length' => $this->faker->numberBetween(3500, 4500)
         ];
 
-        $this->post('/admin/riders', $attributes)
+        $this->post('/admin/tracks', $attributes)
             ->assertRedirect('/admin/tracks');
         $this->assertDatabaseHas('tracks', $attributes);
         $this->get('/admin/tracks')->assertSee($attributes['name']);
