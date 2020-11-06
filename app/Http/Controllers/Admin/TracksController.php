@@ -15,7 +15,11 @@ class TracksController extends Controller
 
     public function store()
     {
-        // $attributes = $this->validateTrack();
+        $attributes = $this->validateTrack();
+        $track = new Track($attributes);
+        $track->save();
+
+        return redirect('/admin/tracks');
     }
 
     public function validateTrack()
