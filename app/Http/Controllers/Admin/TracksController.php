@@ -28,6 +28,14 @@ class TracksController extends Controller
         return redirect('/admin/tracks');
     }
 
+    public function edit(Track $track)
+    {
+        return view('backend.tracks.edit', [
+            'track' => $track,
+            'countries' => Country::all()
+        ]);
+    }
+
     public function validateTrack()
     {
         return request()->validate([
