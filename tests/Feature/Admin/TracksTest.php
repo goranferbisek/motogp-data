@@ -31,4 +31,16 @@ class TracksTest extends TestCase
         $this->assertDatabaseHas('tracks', $attributes);
         $this->get('/admin/tracks')->assertSee($attributes['name']);
     }
+
+    /** @test */
+    public function a_user_can_delete_a_track()
+    {
+        $this->actingAs(factory(User::class)->create());
+        $track = factory(Track::class)->create();
+
+        $this->delete('admin/tracks/' . $track->id)
+            ->assertRedirect('/admin/tracks');
+        $this->get('/admin/riders/' . $track->id . '/edit')->assertNotFound();
+        $this->assertDatabaseMissing('tracks', $track->toArray());
+    }
 }

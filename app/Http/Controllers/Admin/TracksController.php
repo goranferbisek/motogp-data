@@ -36,6 +36,12 @@ class TracksController extends Controller
         ]);
     }
 
+    public function destroy(Track $track)
+    {
+        $track->delete();
+        return redirect('/admin/tracks');
+    }
+
     public function validateTrack()
     {
         return request()->validate([
