@@ -33,6 +33,26 @@ class TracksTest extends TestCase
     }
 
     /** @test */
+    public function a_user_can_edit_a_track()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory(User::class)->create());
+        $track = factory(Track::class)->create();
+
+        $this->get('/admin/tracks/' . $track->id . '/edit')
+            ->assertSee($track->name);
+
+        $attributes = $track->toArray();
+        $attributes['name'] = 'Changed track name';
+
+        $this->put('/admin/tracks/' . $track->id, $attributes)
+            ->assertRedirect('/admin/tracks');
+        $this->get('/admin/tracks/' . $track->id . '/edit')->assertOk();
+        $this->assertDatabaseHas('tracks', ['name' => 'Changed track name']);
+    }
+
+    /** @test */
     public function a_user_can_delete_a_track()
     {
         $this->actingAs(factory(User::class)->create());
