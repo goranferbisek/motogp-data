@@ -42,7 +42,7 @@ class BikesController extends Controller
         return redirect('/admin/bikes');
     }
 
-    public function delete(Bike $bike)
+    public function destroy(Bike $bike)
     {
         $bike->delete();
         return redirect('/admin/bikes');

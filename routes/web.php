@@ -31,27 +31,9 @@ Route::middleware('auth')->group(function() {
         return view('backend.admin');
     });
 
-    Route::get('/admin/teams', 'Admin\TeamsController@index');
-    Route::post('/admin/teams', 'Admin\TeamsController@store');
-    Route::get('/admin/teams/create', 'Admin\TeamsController@create');
-    Route::get('/admin/teams/{team}/edit', 'Admin\TeamsController@edit');
-    Route::put('/admin/teams/{team}', 'Admin\TeamsController@update');
-    Route::delete('/admin/teams/{team}', 'Admin\TeamsController@destroy');
-
-    Route::get('/admin/countries', 'Admin\CountriesController@index');
-    Route::post('/admin/countries', 'Admin\CountriesController@store');
-    Route::get('/admin/countries/create', 'Admin\CountriesController@create');
-    Route::get('/admin/countries/{country}/edit', 'Admin\CountriesController@edit');
-    Route::put('/admin/countries/{country}', 'Admin\CountriesController@update');
-    Route::delete('/admin/countries/{country}', 'Admin\CountriesController@delete');
-
-    Route::get('/admin/bikes', 'Admin\BikesController@index');
-    Route::post('/admin/bikes', 'Admin\BikesController@store');
-    Route::get('/admin/bikes/create', 'Admin\BikesController@create');
-    Route::get('/admin/bikes/{bike}/edit', 'Admin\BikesController@edit');
-    Route::put('/admin/bikes/{bike}', 'Admin\BikesController@update');
-    Route::delete('/admin/bikes/{bike}', 'Admin\BikesController@delete');
-
+    Route::resource('/admin/teams', Admin\TeamsController::class);
+    Route::resource('/admin/countries', Admin\CountriesController::class);
+    Route::resource('/admin/bikes', Admin\BikesController::class);
     Route::resource('/admin/riders', Admin\RidersController::class);
     Route::resource('/admin/tracks', Admin\TracksController::class);
 });

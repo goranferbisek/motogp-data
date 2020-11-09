@@ -42,7 +42,7 @@ class CountriesController extends Controller
         return redirect('/admin/countries');
     }
 
-    public function delete(Country $country)
+    public function destroy(Country $country)
     {
         $country->delete();
         return redirect('/admin/countries');
