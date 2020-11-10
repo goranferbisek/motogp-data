@@ -57,4 +57,14 @@ class BikesTest extends TestCase
         $this->get('/admin/bikes/' . $bike->id . '/edit')->assertNotFound();
         $this->assertDatabaseMissing('bikes', $bike->toArray());
     }
+
+
+    /** @test */
+    public function a_bike_requires_a_name()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $attributes = factory(Bike::class)->raw(['make' => '']);
+        $this->post('/admin/bikes', [])->assertSessionHasErrors('make');
+    }
 }
