@@ -73,7 +73,8 @@ class TeamsTest extends TestCase
     public function a_team_requires_a_name()
     {
         $this->actingAs(factory(User::class)->create());
+        $attributes = factory(Team::class)->raw(['name' => '']);
 
-        $this->post('/admin/teams', [])->assertSessionHasErrors('name');
+        $this->post('/admin/teams', $attributes)->assertSessionHasErrors('name');
     }
 }
