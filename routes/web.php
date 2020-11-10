@@ -36,4 +36,5 @@ Route::middleware('auth')->group(function() {
     Route::resource('/admin/bikes', Admin\BikesController::class);
     Route::resource('/admin/riders', Admin\RidersController::class);
     Route::resource('/admin/tracks', Admin\TracksController::class);
+    Route::resource('/admin/races', Admin\RacesController::class);
 });
