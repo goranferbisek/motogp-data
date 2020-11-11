@@ -20,12 +20,7 @@ class TracksTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
-        $track = factory(Track::class)->create();
-        $attributes = [
-            'country_id' => factory(Country::class)->create()->id,
-            'name' => $this->faker->state .' raceway' . ' ' . $this->faker->country,
-            'length' => $this->faker->numberBetween(3500, 4500)
-        ];
+        $attributes = factory(Track::class)->raw();
 
         $this->post('/admin/tracks', $attributes)
             ->assertRedirect('/admin/tracks');
