@@ -18,17 +18,10 @@ class RidersTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
-        $rider = factory(Rider::class)->create();
-        $attributes = [
-            'name' => $this->faker->firstName . ' ' . $this->faker->Lastname,
-            'team_id' => factory(\App\Team::class)->create()->id,
-            'bike_id' => factory(\App\Bike::class)->create()->id,
-            'country_id' => factory(\App\Country::class)->create()->id,
-            'racing_number' => $this->faker->unique()->numberBetween(1, 99),
-            'age' => $this->faker->numberBetween(20, 45)
-        ];
+        $attributes = factory(Rider::class)->raw();
 
-        $this->post('/admin/riders', $attributes)->assertRedirect('/admin/riders');
+        $this->post('/admin/riders', $attributes)
+            ->assertRedirect('/admin/riders');
         $this->assertDatabaseHas('riders', $attributes);
         $this->get('/admin/riders')->assertSee($attributes['name']);
     }
