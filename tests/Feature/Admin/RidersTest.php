@@ -56,4 +56,58 @@ class RidersTest extends TestCase
         $this->get('/admin/riders/' . $rider->id . '/edit')->assertNotFound();
         $this->assertDatabaseMissing('riders', $rider->toArray());
     }
+
+    /** @test */
+    public function a_rider_requires_a_name()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $attributes = factory(Rider::class)->raw(['name' => '']);
+        $this->post('/admin/riders', $attributes)->assertSessionHasErrors('name');
+    }
+
+    /** @test */
+    public function a_rider_requires_a_team()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $attributes = factory(Rider::class)->raw(['team_id' => '']);
+        $this->post('/admin/riders', $attributes)->assertSessionHasErrors('team_id');
+    }
+
+    /** @test */
+    public function a_rider_requires_a_bike()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $attributes = factory(Rider::class)->raw(['bike_id' => '']);
+        $this->post('/admin/riders', $attributes)->assertSessionHasErrors('bike_id');
+    }
+
+    /** @test */
+    public function a_rider_requires_a_country()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $attributes = factory(Rider::class)->raw(['country_id' => '']);
+        $this->post('/admin/riders', $attributes)->assertSessionHasErrors('country_id');
+    }
+
+    /** @test */
+    public function a_rider_requires_a_racing_number()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $attributes = factory(Rider::class)->raw(['racing_number' => '']);
+        $this->post('/admin/riders', $attributes)->assertSessionHasErrors('racing_number');
+    }
+
+    /** @test */
+    public function a_rider_requires_an_age()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $attributes = factory(Rider::class)->raw(['age' => '']);
+        $this->post('/admin/riders', $attributes)->assertSessionHasErrors('age');
+    }
 }
