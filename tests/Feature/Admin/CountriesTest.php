@@ -59,4 +59,13 @@ class CountriesTest extends TestCase
             ->assertNotFound();
         $this->assertDatabaseMissing('countries', $country->toArray());
     }
+
+    /** @test */
+    public function a_country_requires_a_name()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $attributes = factory(Country::class)->raw(['name' => '']);
+        $this->post('/admin/countries', $attributes)->assertSessionHasErrors('name');
+    }
 }
