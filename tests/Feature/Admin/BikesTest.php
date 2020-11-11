@@ -18,9 +18,7 @@ class BikesTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
-        $attributes = [
-            'make' => $this->faker->unique()->company
-        ];
+        $attributes = factory(Bike::class)->raw();
 
         $this->post('/admin/bikes', $attributes)->assertRedirect('/admin/bikes');
         $this->assertDatabaseHas('bikes', $attributes);
