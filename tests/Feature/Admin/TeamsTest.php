@@ -18,15 +18,10 @@ class TeamsTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
-
-        $attributes = [
-            'name' => $this->faker->company
-        ];
+        $attributes = factory(Team::class)->raw();
 
         $this->post('/admin/teams', $attributes)->assertRedirect('/admin/teams');
-
         $this->assertDatabaseHas('teams', $attributes);
-
         $this->get('/admin/teams')->assertSee($attributes['name']);
     }
 
@@ -36,7 +31,6 @@ class TeamsTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
-
         $team = factory(Team::class)->create();
 
         $this->get('/admin/teams/' . $team->id . '/edit')
@@ -47,7 +41,6 @@ class TeamsTest extends TestCase
             ->assertRedirect('/admin/teams');
 
         $this->get('/admin/teams/' . $team->id . '/edit')->assertOk();
-
         $this->assertDatabaseHas('teams', $attributes);
 
     }
@@ -55,17 +48,13 @@ class TeamsTest extends TestCase
     /** @test */
     public function a_user_can_delete_a_team()
     {
-        //$this->withoutExceptionHandling();
-
         $this->actingAs(factory(User::class)->create());
-
         $team = factory(Team::class)->create();
 
         $this->delete('/admin/teams/' . $team->id)
             ->assertRedirect('/admin/teams');
 
         $this->get('/admin/teams/' . $team->id . '/edit')->assertNotFound();
-
         $this->assertDatabaseMissing('teams', $team->toArray());
     }
 
