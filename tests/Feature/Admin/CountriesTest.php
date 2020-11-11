@@ -18,15 +18,11 @@ class CountriesTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
+        $attributes = factory(Country::class)->raw();
 
-        $attributes = [
-            'name' => $this->faker->unique()->country
-        ];
-
-        $this->post('/admin/countries', $attributes)->assertRedirect('/admin/countries');
-
+        $this->post('/admin/countries', $attributes)
+            ->assertRedirect('/admin/countries');
         $this->assertDatabaseHas('countries', $attributes);
-
         $this->get('/admin/countries')->assertSee($attributes['name']);
     }
 
@@ -36,7 +32,6 @@ class CountriesTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
-
         $country = factory(Country::class)->create();
 
         $this->get('/admin/countries/' . $country->id . '/edit')
@@ -44,11 +39,9 @@ class CountriesTest extends TestCase
 
         $this->put('/admin/countries/' . $country->id, $attributes =  [
             'name' => 'Changed'
-        ])
-        ->assertRedirect('/admin/countries');
+        ])->assertRedirect('/admin/countries');
 
         $this->get('/admin/countries/' . $country->id . '/edit')->assertOk();
-
         $this->assertDatabaseHas('countries', $attributes);
     }
 
@@ -58,8 +51,8 @@ class CountriesTest extends TestCase
         $this->withExceptionHandling();
 
         $this->actingAs(factory(User::class)->create());
-
         $country = factory(Country::class)->create();
+
         $this->delete('/admin/countries/' . $country->id)
             ->assertRedirect('/admin/countries');
         $this->get('/admin/countries/' . $country->id . '/edit')
