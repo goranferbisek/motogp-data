@@ -15,4 +15,11 @@ class RidersTest extends TestCase
         $rider = factory('App\Rider')->create();
         $this->assertInstanceOf('App\Team', $rider->team);
     }
+
+    /** @test */
+    public function rider_has_a_bike()
+    {
+        $rider = factory('App\Rider')->create();
+        $this->assertInstanceOf('App\Bike', $rider->bike);
+    }
 }
