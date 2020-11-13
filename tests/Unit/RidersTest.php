@@ -22,4 +22,11 @@ class RidersTest extends TestCase
         $rider = factory('App\Rider')->create();
         $this->assertInstanceOf('App\Bike', $rider->bike);
     }
+
+    /** @test */
+    public function rider_has_a_country()
+    {
+        $rider = factory('App\Rider')->create();
+        $this->assertInstanceOf('App\Country', $rider->country);
+    }
 }
