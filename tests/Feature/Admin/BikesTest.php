@@ -66,8 +66,18 @@ class BikesTest extends TestCase
         $this->post('/admin/bikes', [])->assertSessionHasErrors('make');
     }
 
+    /** @test */
     public function bike_has_riders()
     {
-        // TODO: How to test a has many relationships?
+        $this->withoutExceptionHandling();
+
+        $bike = factory('App\Bike')->create();
+        $rider = factory('App\Rider')->create(['bike_id' => $bike->id]);
+
+        $this->assertTrue($bike->riders->contains($rider));
+        $this->assertInstanceOf(
+            'Illuminate\Database\Eloquent\Collection',
+             $bike->riders
+        );
     }
 }
