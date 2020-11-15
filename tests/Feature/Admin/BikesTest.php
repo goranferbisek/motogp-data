@@ -65,4 +65,9 @@ class BikesTest extends TestCase
         $attributes = factory(Bike::class)->raw(['make' => '']);
         $this->post('/admin/bikes', [])->assertSessionHasErrors('make');
     }
+
+    public function bike_has_riders()
+    {
+        // TODO: How to test a has many relationships?
+    }
 }
