@@ -66,4 +66,17 @@ class TeamsTest extends TestCase
 
         $this->post('/admin/teams', $attributes)->assertSessionHasErrors('name');
     }
+
+    /** @test */
+    public function a_team_has_riders()
+    {
+        $team = factory('App\Team')->create();
+        $rider = factory('App\Rider')->create(['team_id' => $team->id]);
+
+        $this->assertTrue($team->riders->contains($rider));
+        $this->assertInstanceOf(
+            'Illuminate\Database\Eloquent\Collection',
+            $team->riders
+        );
+    }
 }
