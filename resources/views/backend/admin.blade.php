@@ -12,6 +12,11 @@
             <li class="mb-2"><a href="/admin/bikes">Manage bikes</a></li>
             <li class="mb-2"><a href="/admin/riders">Riders</a></li>
             <li class="mb-2"><a href="/admin/tracks">Tracks</a></li>
+            <hr class="mb-2">
+            <form action="/logout" method="POST">
+                @csrf
+                <input type="submit" value="Logout">
+            </form>
         </ul>
     </nav>
     <div>
